@@ -1,20 +1,18 @@
-let computerChoice;
 
 function getComputerChoice() {
-    randomNumber = Math.random();
-    console.log(randomNumber);
-
-    if (randomNumber <= 0,33) {
-        computerChoice = "Rock";
-    } else if (randomNumber > 0,33 && randomNumber <= 0,66) {
-        computerChoice = "Paper";
-    } else {
-        computerChoice = "Scissors";
-    }
-
+    let options = ["rock", "paper", "scissors"];
+    let number = Math.floor(Math.random() * 3);
+    let computerChoice = options[number];
     return computerChoice;
-    console.log(computerChoice);
-
-    // Retourne toujours Rock !!!
 }
 
+let computerChoice = getComputerChoice();
+console.log(computerChoice);
+
+function getHumanChoice() {
+    let humanChoice = prompt();
+    return humanChoice;
+}
+
+let humanChoice = getHumanChoice();
+console.log(humanChoice);
