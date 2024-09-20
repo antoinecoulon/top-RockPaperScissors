@@ -35,7 +35,13 @@ function playGame() {
         }
 
     }
+    const buttonSelection = document.querySelector("button");
+//const rockButton = document.querySelector("#rock");
+//const paperButton = document.querySelector("#paper");
+//const scissorsButton = document.querySelector("#scissors");
 
+buttonSelection.addEventListener("click", playRound(humanChoice));
+/*
     for (let i = 1; i <= 5; i++) {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
@@ -44,6 +50,7 @@ function playGame() {
         console.log(result);
         console.log("Human score is " + humanScore + " and Computer score is " + computerScore);
     }
+*/    
     let winner;
     if (humanScore > computerScore) {
         console.log("You are the WINNER !!!!");
@@ -51,5 +58,7 @@ function playGame() {
         console.log("Computer beats you... Try again!");
 }
 }
+
+
 
 playGame();
