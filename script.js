@@ -18,8 +18,10 @@ function getHumanChoice(event) {
     // Vérifier si il y a un vainqueur
     if(humanScore == 5) {
         document.getElementById("end").textContent = "You won the game !";
+        endGame();
     } else if(computerScore == 5) {
         document.getElementById("end").textContent = "IA won the game !";
+        endGame();
     }
 }
 
@@ -53,5 +55,36 @@ function playRound(humanChoice, computerChoice) {
         computerScore++;
         return "Computer wins!";
     }
- 
 }
+
+// Désactiver les boutons après que quelqu'un ait gagné et afficher "Rejouer"
+function endGame() {
+    document.getElementById("rock").disabled = true;
+    document.getElementById("paper").disabled = true;
+    document.getElementById("scissors").disabled = true;
+
+    // Afficher le bouton "Rejouer"
+    document.getElementById("replay").style.display = "inline";
+}
+
+// Fonction pour réinitialiser le jeu
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+
+    // Réinitialiser les textes
+    document.getElementById("result").textContent = "";
+    document.getElementById("end").textContent = "";
+    document.getElementById("score").textContent = `Score: You 0 - IA 0`;
+
+    // Réactiver les boutons
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissors").disabled = false;
+
+    // Cacher le bouton "Rejouer"
+    document.getElementById("replay").style.display = "none";
+}
+
+// Écouter le clic sur le bouton "Rejouer"
+document.getElementById("replay").addEventListener("click", resetGame);
