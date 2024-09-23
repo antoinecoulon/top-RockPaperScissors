@@ -1,4 +1,27 @@
+let humanScore = 0;
+let computerScore = 0;
 
+// Fonction pour récupérer la valeur du bouton cliqué et jouer un round
+function getHumanChoice(event) {
+    const humanChoice = event.target.value;
+    const computerChoice = getComputerChoice();
+    const result = playRound(humanChoice, computerChoice);
+
+    // Afficher le résultat du round
+    document.getElementById("result").textContent =
+        `You chose ${humanChoice}, IA chose ${computerChoice}.`;
+
+    // Mettre le score à jour
+    document.getElementById("score").textContent =
+        `Score: You ${humanScore} - IA ${computerScore}`
+}
+
+// écoute les clicks
+document.getElementById("rock").addEventListener("click", getHumanChoice);
+document.getElementById("paper").addEventListener("click", getHumanChoice);
+document.getElementById("scissors").addEventListener("click", getHumanChoice);
+
+// choix de l'ordinateur
 function getComputerChoice() {
     let options = ["rock", "paper", "scissors"];
     let number = Math.floor(Math.random() * 3);
@@ -6,41 +29,32 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function getHumanChoice() {
-    let humanInput = prompt();
-    let humanChoice = humanInput.toLowerCase();
-    return humanChoice;
+// Jouer un round
+function playRound(humanChoice, computerChoice) {
+    const outcomes = {
+        rock: 'scissors',
+        scissors: 'paper',
+        paper: 'rock'
+    };
+    
+    if (humanChoice === computerChoice) {
+        return "It's a tie!";
+    } else if (outcomes[humanChoice] === computerChoice) {
+        humanScore++;
+        return "You win!";
+    } else {
+        computerScore++;
+        return "Computer wins!";
+    }
+
 }
 
-function playGame() {
 
-    let humanScore = 0;
-    let computerScore = 0;
 
-    function playRound(humanChoice, computerChoice) {
-        const outcomes = {
-            rock: 'scissors',
-            scissors: 'paper',
-            paper: 'rock'
-        };
-        
-        if (humanChoice === computerChoice) {
-            return "It's a tie!";
-        } else if (outcomes[humanChoice] === computerChoice) {
-            humanScore++;
-            return "You win!";
-        } else {
-            computerScore++;
-            return "Computer wins!";
-        }
 
-    }
-    const buttonSelection = document.querySelector("button");
-//const rockButton = document.querySelector("#rock");
-//const paperButton = document.querySelector("#paper");
-//const scissorsButton = document.querySelector("#scissors");
+    
 
-buttonSelection.addEventListener("click", playRound(humanChoice));
+
 /*
     for (let i = 1; i <= 5; i++) {
         const humanSelection = getHumanChoice();
@@ -50,7 +64,7 @@ buttonSelection.addEventListener("click", playRound(humanChoice));
         console.log(result);
         console.log("Human score is " + humanScore + " and Computer score is " + computerScore);
     }
-*/    
+   
     let winner;
     if (humanScore > computerScore) {
         console.log("You are the WINNER !!!!");
@@ -61,4 +75,5 @@ buttonSelection.addEventListener("click", playRound(humanChoice));
 
 
 
-playGame();
+//playGame();
+*/
