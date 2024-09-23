@@ -13,7 +13,14 @@ function getHumanChoice(event) {
 
     // Mettre le score à jour
     document.getElementById("score").textContent =
-        `Score: You ${humanScore} - IA ${computerScore}`
+        `Score: You ${humanScore} - IA ${computerScore}`;
+
+    // Vérifier si il y a un vainqueur
+    if(humanScore == 5) {
+        document.getElementById("end").textContent = "You won the game !";
+    } else if(computerScore == 5) {
+        document.getElementById("end").textContent = "IA won the game !";
+    }
 }
 
 // écoute les clicks
@@ -46,34 +53,5 @@ function playRound(humanChoice, computerChoice) {
         computerScore++;
         return "Computer wins!";
     }
-
+ 
 }
-
-
-
-
-    
-
-
-/*
-    for (let i = 1; i <= 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        
-        let result = playRound(humanSelection, computerSelection);
-        console.log(result);
-        console.log("Human score is " + humanScore + " and Computer score is " + computerScore);
-    }
-   
-    let winner;
-    if (humanScore > computerScore) {
-        console.log("You are the WINNER !!!!");
-    } else {
-        console.log("Computer beats you... Try again!");
-}
-}
-
-
-
-//playGame();
-*/
