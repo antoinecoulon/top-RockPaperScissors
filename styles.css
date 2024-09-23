@@ -1,0 +1,9 @@
+div {
+    display: block;
+    width: 500px;
+    height: 200px;
+    background-color: cornflowerblue;
+    margin: 200px auto;
+    padding: 20px;
+    border: 2px solid aqua;
+}
